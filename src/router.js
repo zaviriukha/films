@@ -26,6 +26,12 @@ export default new Router({
       name: 'more',
       component: () =>
         import ( /* webpackChunkName: "more" */ './views/More.vue')
+    },
+    {
+      path: '/likeList',
+      name: 'LikeList',
+      component: () =>
+        import ( /* webpackChunkName: "more" */ './views/LikeList.vue')
     }
   ]
 })
