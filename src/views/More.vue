@@ -2,18 +2,22 @@
   <div class="more">
     <div class="film-card">
       <div class="film-poster">
-        <img src="../img/venom.jpg" alt="">
+        <img alt="" :src="'http://image.tmdb.org/t/p/w154'+movie.poster_path">
       </div>
       <div class="film-info">
         <div class="film-title">
-          <h2>Film title</h2>
+             {{ movie.original_title }} 
         </div>
         <div class="film-desc">
-          <p>When a young nun at a cloistered abbey in Romania takes her own life, a priest with a haunted past and a novitiate on the threshold of her final vows are sent by the Vatican to investigate. Together they uncover…</p>
+          <p>{{movie.overview}}</p>
         </div>
+          <p v-for="genre in genres">
+            {{ genre.name }}
+          </p>
       </div>
     </div>
-    <div class="films-carusel" ><!-- -->
+
+     <div class="films-carusel" >
       <div class="film-slot" v-for="result in results">
         <a href="#">
           <img :src="'http://image.tmdb.org/t/p/w92'+result.poster_path" alt="">
@@ -24,7 +28,6 @@
   </div>
 </template>
 <script>
-import { bus } from "../script/bus.js";
 import axios from "axios";
 
 export default {
@@ -34,11 +37,25 @@ export default {
     return {
       results: null,
       resultsEndpoint:
-        "https://api.themoviedb.org/3/movie/335983/similar?api_key=b7f7d13f7fb8d9fa2709ae92515f4247&language=en-US"
+        "https://api.themoviedb.org/3/movie/" +
+        this.$route.params.id +
+        "/similar?api_key=b7f7d13f7fb8d9fa2709ae92515f4247&language=en-US",
+      genres: [],
+      genresEndpoint:
+        "https://api.themoviedb.org/3/movie/" +
+        this.$route.params.id +
+        "?api_key=b7f7d13f7fb8d9fa2709ae92515f4247&language=en-US",
+      movie: "",
+      movieEndpoint:
+        "https://api.themoviedb.org/3/movie/" +
+        this.$route.params.id +
+        "?api_key=b7f7d13f7fb8d9fa2709ae92515f4247&language=en-US"
     };
   },
   created() {
     this.getSameFilms();
+    this.getGenre();
+    this.getMovieInfo();
   },
   methods: {
     getSameFilms() {
@@ -49,6 +66,28 @@ export default {
         })
         .catch(error => {
           console.log("-----error-------");
+          console.log(error);
+        });
+    },
+    getGenre() {
+      axios
+        .get(this.genresEndpoint)
+        .then(response => {
+          this.genres = response.data.genres;
+        })
+        .catch(error => {
+          console.log("genre error");
+          console.log(error);
+        });
+    },
+    getMovieInfo() {
+      axios
+        .get(this.movieEndpoint)
+        .then(response => {
+          this.movie = response.data;
+        })
+        .catch(error => {
+          console.log("genre error");
           console.log(error);
         });
     }
@@ -70,7 +109,7 @@ h2 {
   padding-bottom: 10px;
 }
 .films-carusel {
-  width: 950px;
+  width: 970px;
   margin: 0px auto;
   display: flex;
   flex-wrap: wrap;
