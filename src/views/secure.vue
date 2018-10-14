@@ -106,13 +106,14 @@ h3 {
   flex-wrap: wrap;
 }
 .card {
-  width: 480px;
+  width: 530px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
   border: 1px solid #cccccc;
   padding: 15px;
   border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 .card-info {
   margin-left: 20px;

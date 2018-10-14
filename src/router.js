@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import LoginComponent from "./views/login.vue"
 import SecureComponent from "./views/secure.vue"
 import MoreComponent from "./views/More.vue"
+import GenresComponent from "./views/Genres.vue"
 
 Vue.use(Router)
 
@@ -21,13 +22,17 @@ export default new Router({
     {
       path: "/secure",
       name: "secure",
-      component: SecureComponent,
-      props: true
+      component: SecureComponent
     },
     {
       path: "/More/:id",
       name: "more",
       component: MoreComponent
+    },
+    {
+      path: "/Genres/:id",
+      name: "genres",
+      component: GenresComponent
     }
 
   ]

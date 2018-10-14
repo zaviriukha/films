@@ -2,7 +2,7 @@
     <div id="app">
       <div class="wrap-nav">
         <div id="nav">
-          <router-link v-if="authenticated" to="/" class="logo"><img src="./assets/logo.png" alt="logo">Wof-wof Films</router-link>
+          <router-link v-if="authenticated" to="/secure" class="logo"><img src="./assets/logo.png" alt="logo">Wof-wof Films</router-link>
           <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace class="logout">Logout</router-link>
         </div>  
       </div>

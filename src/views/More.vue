@@ -6,22 +6,32 @@
       </div>
       <div class="film-info">
         <div class="film-title">
-             {{ movie.original_title }} 
+            <h1>{{ movie.original_title }}</h1> 
         </div>
         <div class="film-desc">
           <p>{{movie.overview}}</p>
         </div>
-          <p v-for="genre in genres">
-            {{ genre.name }}
-          </p>
+        <div class="film-genres">
+          <h3>
+            Genres
+          </h3>
+          <div class="films-genres" >
+            <router-link v-for="genre in genres" :to="'/Genres/'+genre.id">{{ genre.name }},</router-link>
+          </div>
+        </div>
       </div>
     </div>
 
-     <div class="films-carusel" >
-      <div class="film-slot" v-for="result in results">
-        <a href="#">
-          <img :src="'http://image.tmdb.org/t/p/w92'+result.poster_path" alt="">
-        </a>
+    <div class="similar">
+      <h2>
+        Similar films
+      </h2> 
+      <div class="films-carusel" >
+        <div class="film-slot" v-for="result in results">
+          <a href="#">
+            <img :src="'http://image.tmdb.org/t/p/w92'+result.poster_path" alt="">
+          </a>
+        </div>
       </div>
     </div>
 
@@ -104,10 +114,30 @@ export default {
 .film-info {
   margin-left: 20px;
 }
+.film-title h1 {
+  font-size: 32px;
+  text-transform: uppercase;
+}
+.film-desc,
+.film-genres {
+  margin-top: 15px;
+}
+.film-desc p {
+  margin: 5px 0px;
+  font-size: 15px;
+}
 h2 {
   margin: 0px;
   padding-bottom: 10px;
 }
+.films-genres {
+  display: flex;
+}
+.films-genres a {
+  text-decoration: none;
+  padding: 10px 10px 10px 0px;
+}
+
 .films-carusel {
   width: 970px;
   margin: 0px auto;
@@ -116,6 +146,14 @@ h2 {
 }
 .film-slot {
   padding: 0px 5px 5px 0px;
+}
+.similar {
+  margin-top: 40px;
+}
+.similar h2 {
+  text-align: center;
+  font-size: 32px;
+  text-transform: uppercase;
 }
 </style>
 
