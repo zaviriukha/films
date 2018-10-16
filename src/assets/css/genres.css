@@ -1,0 +1,33 @@
+.in-genre {
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.in-genre h1 {
+    text-align: center;
+    text-transform: uppercase;
+    margin: 20px 0px;
+}
+
+.genres-list {
+    display: flex;
+    border: 1px solid #e3e3e3;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.overview-genres-list {
+    margin-left: 20px;
+}
+
+.overview-genres-list h3 {
+    font-size: 22px;
+}
+
+.overview-genres-list p {
+    font-size: 14px;
+    margin: 10px 0px;
+    text-align: justify;
+}

@@ -4,6 +4,7 @@ import LoginComponent from "./views/login.vue"
 import SecureComponent from "./views/secure.vue"
 import MoreComponent from "./views/More.vue"
 import GenresComponent from "./views/Genres.vue"
+import FavoritesComponent from "./views/Favorites.vue"
 
 Vue.use(Router)
 
@@ -33,6 +34,10 @@ export default new Router({
       path: "/Genres/:id",
       name: "genres",
       component: GenresComponent
+    }, {
+      path: "/Favorites",
+      name: "favorites",
+      component: FavoritesComponent
     }
 
   ]

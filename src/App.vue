@@ -40,47 +40,10 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css?family=Asap:400,700");
-
-body {
-  background-color: #f0f0f0;
-  margin: 0px;
-}
-h1 {
-  padding: 0;
-  margin-top: 0;
-}
-#app {
-  width: 1024px;
-  margin: auto;
-  font-family: "Asap", sans-serif;
-}
-.wrap-nav {
-  width: 100%;
-  background-color: blue;
-}
-#nav {
-  max-width: 1200px;
-  margin: auto;
-  padding: 10px 0px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-#nav .logo {
-  display: flex;
-  align-items: center;
-  color: #fff;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 16px;
-}
-#nav .logo img {
-  width: 40px;
-  padding-right: 10px;
-}
-#nav .logout {
-  color: #fff;
-  text-decoration: none;
-}
+@import url("../src/assets/css/app.css");
+@import url("../src/assets/css/secure.css");
+@import url("../src/assets/css/login.css");
+@import url("../src/assets/css/more.css");
+@import url("../src/assets/css/genres.css");
+@import url("../src/assets/css/favorites.css");
 </style>

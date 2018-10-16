@@ -20,7 +20,7 @@
 <script>
 export default {
   name: "Login",
-  data() {
+  data () {
     return {
       input: {
         username: "",
@@ -29,73 +29,21 @@ export default {
     };
   },
   methods: {
-    login() {
+    login () {
       if (this.input.username != "" && this.input.password != "") {
         if (
           this.input.username == this.$parent.mockAccount.username &&
           this.input.password == this.$parent.mockAccount.password
         ) {
-          this.$emit("authenticated", true);
-          this.$router.replace({ name: "secure" });
+          this.$emit("authenticated", true)
+          this.$router.replace({ name: "secure" })
         } else {
-          console.log("The username and / or password is incorrect");
+          console.log("The username and / or password is incorrect")
         }
       } else {
-        console.log("A username and password must be present");
+        console.log("A username and password must be present")
       }
     }
   }
-};
+}
 </script>
-
-<style scoped>
-#login {
-  width: 300px;
-  border: 1px solid #cccccc;
-  background-color: #ffffff;
-  margin: auto;
-  margin-top: 100px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  border-radius: 3px;
-}
-#login h1 {
-  margin-bottom: 10px;
-  border-bottom: 1px solid;
-  padding-bottom: 10px;
-}
-#login input {
-  width: 274px;
-  margin: 7px 0px 7px;
-}
-.log-butt {
-  display: flex;
-  justify-content: space-between;
-}
-.log-butt a {
-  display: block;
-  margin-top: 16px;
-  font-size: 12px;
-}
-.log-butt button {
-  width: 70px;
-  cursor: pointer;
-  padding: 5px;
-  display: block;
-  font-size: 16px;
-  margin-top: 10px;
-  background-color: blue;
-  border: none;
-  border-radius: 3px;
-  color: #fff;
-}
-.hint {
-  width: 300px;
-  margin: auto;
-  border: 1px solid #cccccc;
-  border-radius: 3px;
-  padding: 20px;
-  margin-top: 50px;
-}
-</style>

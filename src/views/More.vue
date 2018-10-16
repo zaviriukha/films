@@ -11,12 +11,10 @@
         <div class="film-desc">
           <p>{{movie.overview}}</p>
         </div>
+        <h3>Genres</h3>
         <div class="film-genres">
-          <h3>
-            Genres
-          </h3>
-          <div class="films-genres" >
-            <router-link v-for="genre in genres" :to="'/Genres/'+genre.id">{{ genre.name }},</router-link>
+          <div class="films-genres" v-for="genre in genres">
+            <router-link  :to="'/Genres/'+genre.id">{{ genre.name }},</router-link>
           </div>
         </div>
       </div>
@@ -28,9 +26,7 @@
       </h2> 
       <div class="films-carusel" >
         <div class="film-slot" v-for="result in results">
-          <a href="#">
-            <img :src="'http://image.tmdb.org/t/p/w92'+result.poster_path" alt="">
-          </a>
+          <img :src="'http://image.tmdb.org/t/p/w92'+result.poster_path" alt="">
         </div>
       </div>
     </div>
@@ -38,12 +34,12 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import axios from "axios"
 
 export default {
   name: "more",
   components: {},
-  data() {
+  data () {
     return {
       results: null,
       resultsEndpoint:
@@ -60,100 +56,49 @@ export default {
         "https://api.themoviedb.org/3/movie/" +
         this.$route.params.id +
         "?api_key=b7f7d13f7fb8d9fa2709ae92515f4247&language=en-US"
-    };
+    }
   },
   created() {
-    this.getSameFilms();
-    this.getGenre();
-    this.getMovieInfo();
+    this.getSameFilms ()
+    this.getGenre ()
+    this.getMovieInfo ()
   },
   methods: {
-    getSameFilms() {
+    getSameFilms () {
       axios
         .get(this.resultsEndpoint)
         .then(response => {
-          this.results = response.data.results;
+          this.results = response.data.results
         })
         .catch(error => {
-          console.log("-----error-------");
-          console.log(error);
+          console.log("-----error-------")
+          console.log(error)
         });
     },
-    getGenre() {
+    getGenre () {
       axios
         .get(this.genresEndpoint)
         .then(response => {
-          this.genres = response.data.genres;
+          this.genres = response.data.genres
         })
         .catch(error => {
-          console.log("genre error");
-          console.log(error);
+          console.log("genre error")
+          console.log(error)
         });
     },
-    getMovieInfo() {
+    getMovieInfo () {
       axios
         .get(this.movieEndpoint)
         .then(response => {
-          this.movie = response.data;
+          this.movie = response.data
         })
         .catch(error => {
-          console.log("genre error");
-          console.log(error);
+          console.log("genre error")
+          console.log(error)
         });
     }
   }
-};
+}
 </script>
-<style>
-.film-card {
-  display: flex;
-  justify-content: space-between;
-  width: 800px;
-  margin: 20px auto;
-}
-.film-info {
-  margin-left: 20px;
-}
-.film-title h1 {
-  font-size: 32px;
-  text-transform: uppercase;
-}
-.film-desc,
-.film-genres {
-  margin-top: 15px;
-}
-.film-desc p {
-  margin: 5px 0px;
-  font-size: 15px;
-}
-h2 {
-  margin: 0px;
-  padding-bottom: 10px;
-}
-.films-genres {
-  display: flex;
-}
-.films-genres a {
-  text-decoration: none;
-  padding: 10px 10px 10px 0px;
-}
 
-.films-carusel {
-  width: 970px;
-  margin: 0px auto;
-  display: flex;
-  flex-wrap: wrap;
-}
-.film-slot {
-  padding: 0px 5px 5px 0px;
-}
-.similar {
-  margin-top: 40px;
-}
-.similar h2 {
-  text-align: center;
-  font-size: 32px;
-  text-transform: uppercase;
-}
-</style>
 
